@@ -1,0 +1,89 @@
+<div>
+    <form [formGroup]="formGroup" class="example-form">
+        <div>
+            <mat-form-field class="example-full-width">
+                <input type="text" formControlName="name" required minlength="4" maxlength="20" matInput
+                    placeholder="Name">
+            </mat-form-field>
+            <div *ngIf="formGroup.controls['name'].invalid && (formGroup.controls['name'].dirty || formGroup.controls['name'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="formGroup.controls['name'].errors?.required">
+                    Name is required.
+                </div>
+                <div *ngIf="formGroup.controls['name'].errors?.minlength">
+                    Name must be at least 4 characters long.
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <mat-form-field class="example-full-width">
+                <input type="text" formControlName="age" required pattern="^[1-9]?[0-9]{1}$|^100$" matInput
+                    placeholder="Age">
+            </mat-form-field>
+            <div *ngIf="formGroup.controls['age'].invalid && (formGroup.controls['age'].dirty || formGroup.controls['age'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="formGroup.controls['age'].errors?.required">
+                    Age is required.
+                </div>
+                <div *ngIf="formGroup.controls['age'].errors?.pattern">
+                    Age must be greater than 0 and less than 100.
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <mat-form-field class="example-full-width">
+                <input type="text" minlength="10" maxlength="50" required formControlName="address" matInput
+                    placeholder="Address">
+            </mat-form-field>
+            <div *ngIf="formGroup.controls['address'].invalid && (formGroup.controls['address'].dirty || formGroup.controls['address'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="formGroup.controls['address'].errors?.required">
+                    Address is required.
+                </div>
+                <div *ngIf="!constrainted && formGroup.controls['address'].errors?.minlength">
+                    Address must be at least 10 characters long.
+                </div>
+                <div *ngIf="constrainted">
+                    Address must be at least 20 characters long.
+                </div>
+            </div>
+        </div>
+
+        <mat-checkbox type="checkbox" (click)="toogleShow()">Email</mat-checkbox>
+        <div *ngIf="isShown">
+            <mat-form-field class="example-full-width">
+                <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" minlength="10" maxlength="50"
+                    required formControlName="email" matInput placeholder="Emial">
+            </mat-form-field>
+            <div *ngIf="formGroup.controls['email'].invalid && (formGroup.controls['email'].dirty || formGroup.controls['email'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="formGroup.controls['email'].errors?.required">
+                    Email is required.
+                </div>
+                <div *ngIf="formGroup.controls['email'].errors?.pattern">
+                    This is not a valid Email.
+                </div>
+            </div>
+        </div>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Career</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let c of careers" [value]="c">{{c}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Hobby</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let h of hobbies" [value]="h">{{h}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="save()" [disabled]="formGroup.invalid">
+            <mat-icon>plus_one</mat-icon>
+        </button>
+    </form>
+</div>
