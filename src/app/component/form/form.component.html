@@ -9,12 +9,10 @@
     .example-full-width {
         width: 100%;
     }
-
-
 </style>
 
-<div style="margin-top: 100px;" id="general">
-    <form [formGroup]="formGroup" class="example-form"> 
+<div style="margin-top: 100px;">
+    <form [formGroup]="formGroup" class="example-form" id="general">
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
                 <input type="text" formControlName="name" required minlength="4" maxlength="20" matInput
@@ -109,6 +107,8 @@
         <button mat-button color="primary" (click)="save()" style="width: 100%;"
             [disabled]="formGroup.invalid || spinner" id="save">Save</button>
     </form>
+    <div *ngIf="spinner">
+        <h3 style="text-align: center;">Saving</h3>
+        <mat-spinner style="margin: auto; top: auto;"></mat-spinner>
+    </div>
 </div>
-
-<mat-spinner *ngIf="spinner" style="margin: auto; margin-top: 50px;"></mat-spinner>
