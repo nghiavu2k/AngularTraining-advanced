@@ -1,7 +1,22 @@
-<div>
-    <form [formGroup]="formGroup" class="example-form">
+<style>
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+        margin: auto
+    }
+
+    .example-full-width {
+        width: 100%;
+    }
+
+
+</style>
+
+<div style="margin-top: 100px;" id="general">
+    <form [formGroup]="formGroup" class="example-form"> 
         <div>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" appearance="fill">
                 <input type="text" formControlName="name" required minlength="4" maxlength="20" matInput
                     placeholder="Name" appAlphabetOnly>
             </mat-form-field>
@@ -17,7 +32,7 @@
         </div>
 
         <div>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" appearance="fill">
                 <input type="number" formControlName="age" required pattern="^[1-9]?[0-9]{1}$|^100$" matInput
                     placeholder="Age">
             </mat-form-field>
@@ -33,7 +48,7 @@
         </div>
 
         <div>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" appearance="fill">
                 <input type="text" minlength="10" maxlength="50" required formControlName="address" matInput
                     placeholder="Address">
             </mat-form-field>
@@ -52,7 +67,7 @@
         </div>
 
         <div>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Choose a date</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="dob" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -62,9 +77,9 @@
 
         <mat-checkbox type="checkbox" (click)="toogleShow()">Email</mat-checkbox>
         <div *ngIf="isShown">
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" appearance="fill">
                 <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" minlength="10" maxlength="50"
-                    required formControlName="email" matInput placeholder="Emial">
+                    required formControlName="email" matInput placeholder="Email">
             </mat-form-field>
             <div *ngIf="formGroup.controls['email'].invalid && (formGroup.controls['email'].dirty || formGroup.controls['email'].touched)"
                 class="alert alert-danger">
@@ -77,23 +92,23 @@
             </div>
         </div>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Career</mat-label>
             <mat-select>
                 <mat-option *ngFor="let c of careers" [value]="c">{{c}}</mat-option>
             </mat-select>
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Hobby</mat-label>
             <mat-select>
                 <mat-option *ngFor="let h of hobbies" [value]="h">{{h}}</mat-option>
             </mat-select>
         </mat-form-field>
         <br>
-        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="save()"
-            [disabled]="formGroup.invalid">
-            <mat-icon>plus_one</mat-icon>
-        </button>
+        <button mat-button color="primary" (click)="save()" style="width: 100%;"
+            [disabled]="formGroup.invalid || spinner" id="save">Save</button>
     </form>
 </div>
+
+<mat-spinner *ngIf="spinner" style="margin: auto; margin-top: 50px;"></mat-spinner>

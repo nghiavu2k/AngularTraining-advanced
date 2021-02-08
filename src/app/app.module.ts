@@ -14,19 +14,28 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatIconModule} from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 import { PipeAndDirectiveComponent } from './component/pipe-and-directive/pipe-and-directive.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DirectiveComponent } from './component/directive/directive.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [AppComponent, ListComponent, FormComponent, UpdateComponent, PipeAndDirectiveComponent, DirectiveComponent],
+  declarations: [
+    AppComponent,
+    ListComponent,
+    FormComponent,
+    UpdateComponent,
+    PipeAndDirectiveComponent,
+    DirectiveComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     MatTableModule,
     MatButtonModule,
     MatFormFieldModule,

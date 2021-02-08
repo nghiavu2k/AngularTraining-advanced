@@ -39,9 +39,7 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
       ]),
-      dob: new FormControl('', [
-        Validators.required,
-      ]),
+      dob: new FormControl('', [Validators.required]),
       career: new FormControl(''),
       hobby: new FormControl(''),
     });
@@ -83,9 +81,7 @@ export class FormComponent implements OnInit {
           Validators.required,
           Validators.minLength(10),
         ]),
-        dob: new FormControl(dob, [
-          Validators.required
-        ]),
+        dob: new FormControl(dob, [Validators.required]),
         email: new FormControl('', [Validators.required, Validators.email]),
         career: new FormControl(career),
         hobby: new FormControl(hobby),
@@ -107,9 +103,7 @@ export class FormComponent implements OnInit {
           Validators.required,
           Validators.minLength(10),
         ]),
-        dob: new FormControl(dob, [
-          Validators.required,
-        ]),
+        dob: new FormControl(dob, [Validators.required]),
         career: new FormControl(career),
         hobby: new FormControl(hobby),
       });
@@ -129,6 +123,12 @@ export class FormComponent implements OnInit {
     };
     this.list.push(newHero);
     this.heroService.addHero(newHero);
-    this.router.navigateByUrl('');
+    this.spinner = true;
+    document.getElementById('general')!.style.filter = 'blur(2px)';
+    setTimeout(() => {
+      this.router.navigateByUrl('');
+    }, 3000);
   }
+
+  spinner: boolean = false;
 }
