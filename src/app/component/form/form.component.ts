@@ -84,8 +84,7 @@ export class FormComponent implements OnInit {
           Validators.minLength(10),
         ]),
         dob: new FormControl(dob, [
-          Validators.required,
-          Validators.minLength(10),
+          Validators.required
         ]),
         email: new FormControl('', [Validators.required, Validators.email]),
         career: new FormControl(career),
@@ -110,7 +109,6 @@ export class FormComponent implements OnInit {
         ]),
         dob: new FormControl(dob, [
           Validators.required,
-          Validators.minLength(10),
         ]),
         career: new FormControl(career),
         hobby: new FormControl(hobby),

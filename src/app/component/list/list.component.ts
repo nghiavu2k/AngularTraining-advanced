@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { DatePipe } from '@angular/common';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Hero } from 'src/app/model/hero';
 import { HeroService } from 'src/app/service/hero.service';
 
@@ -7,6 +8,7 @@ import { HeroService } from 'src/app/service/hero.service';
   selector: 'app-list',
   templateUrl: './list.component.html',
 })
+
 
 export class ListComponent implements OnInit {
   list: Hero[] = [];

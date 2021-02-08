@@ -30,6 +30,7 @@ export class UpdateComponent implements OnInit {
       Validators.required,
       Validators.minLength(10),
     ]),
+    dob: new FormControl('', [Validators.required]),
     career: new FormControl(''),
     hobby: new FormControl(''),
   });
@@ -46,7 +47,7 @@ export class UpdateComponent implements OnInit {
     let heroes = this.heroService.getHeros();
     this.hero = heroes.find((p: Hero | any) => p.id == this.id);
     this.formGroup.patchValue(this.hero);
-    if(this.hero.value.email) {
+    if (this.hero.value.email) {
       this.isShown = true;
     }
   }
@@ -73,6 +74,7 @@ export class UpdateComponent implements OnInit {
     let name = this.formGroup.value.name;
     let age = this.formGroup.value.age;
     let address = this.formGroup.value.address;
+    let dob = this.formGroup.value.dob;
     let career = this.formGroup.value.career;
     let hobby = this.formGroup.value.hobby;
     this.isShown = !this.isShown;
@@ -93,6 +95,7 @@ export class UpdateComponent implements OnInit {
           Validators.required,
           Validators.minLength(10),
         ]),
+        dob: new FormControl(dob, [Validators.required]),
         email: new FormControl('', [Validators.required, Validators.email]),
         career: new FormControl(career),
         hobby: new FormControl(hobby),
@@ -114,6 +117,7 @@ export class UpdateComponent implements OnInit {
           Validators.required,
           Validators.minLength(10),
         ]),
+        dob: new FormControl(dob, [Validators.required]),
         career: new FormControl(career),
         hobby: new FormControl(hobby),
       });

@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-pipe-and-directive',
-  templateUrl: './pipe-and-directive.component.html'
-})
-export class PipeAndDirectiveComponent implements OnInit {
+import { DatePipe } from '@angular/common';
+import { Directive, Pipe, PipeTransform } from '@angular/core';
+@Pipe({name: 'formatDate'})
+export class PipeAndDirectiveComponent implements PipeTransform {
 
   constructor() { }
-
-  ngOnInit(): void {
+  transform(date: Date | string, format: string = 'yyyy-MM-dd'): string | null{
+    date = new Date(date);
+    date.setDate(date.getDate());
+    return new DatePipe('en-US').transform(date, format);
   }
+
+  
 
 }

@@ -19,9 +19,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { PipeAndDirectiveComponent } from './component/pipe-and-directive/pipe-and-directive.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DirectiveComponent } from './component/directive/directive.component';
 
 @NgModule({
-  declarations: [AppComponent, ListComponent, FormComponent, UpdateComponent, PipeAndDirectiveComponent],
+  declarations: [AppComponent, ListComponent, FormComponent, UpdateComponent, PipeAndDirectiveComponent, DirectiveComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
