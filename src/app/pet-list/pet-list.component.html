@@ -1,0 +1,29 @@
+<button mat-raised-button routerLink="../pet-save">Create new</button>
+
+<form [formGroup]="stt">
+    <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option *ngFor="let s of statuses" [value]="s">{{s}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button color="primary" (click)="getPetsByStatus()">Submit</button>
+</form>
+
+
+<table border=1px>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Name</th>
+    <th>Phpto</th>
+    <th>Status</th>
+    <th>Delete</th>
+    <tbody *ngFor="let p of list">
+        <td>{{p.id}}</td>
+        <td>{{p.category?.name}}</td>
+        <td>{{p.photoUrls}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.status}}</td>
+        <td><button (click)="delete(p.id)">Delete</button></td>
+    </tbody>
+</table>

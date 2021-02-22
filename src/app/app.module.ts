@@ -21,6 +21,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DirectiveComponent } from './component/directive/directive.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DebounceClickDirective } from './component/directive/debounce-click.directive';
+import { PetListComponent } from './pet-list/pet-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PetSaveComponent } from './pet-save/pet-save.component';
+import { PetUpdateComponent } from './pet-update/pet-update.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     UpdateComponent,
     PipeAndDirectiveComponent,
     DirectiveComponent,
+    DebounceClickDirective,
+    PetListComponent,
+    PetSaveComponent,
+    PetUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +58,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RouterModule.forRoot(routes, {
       useHash: true,
     }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

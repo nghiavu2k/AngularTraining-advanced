@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
   careers = ['fresher', 'middle', 'cto'];
   hobbies = ['soccer', 'football', 'basketball'];
   formGroup: any;
+  spinner: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -129,6 +130,4 @@ export class FormComponent implements OnInit {
       this.router.navigateByUrl('');
     }, 3000);
   }
-
-  spinner: boolean = false;
 }

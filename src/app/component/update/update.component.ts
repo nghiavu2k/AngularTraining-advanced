@@ -47,16 +47,16 @@ export class UpdateComponent implements OnInit {
     let heroes = this.heroService.getHeros();
     this.hero = heroes.find((p: Hero | any) => p.id == this.id);
     this.formGroup.patchValue(this.hero);
-    if (this.hero.value.email) {
-      this.isShown = true;
-    }
+    
   }
 
   save() {
     if (this.formGroup.value) {
       this.formGroup.value.id = this.hero.id;
       this.heroService.updateHero(this.formGroup.value);
-      this.router.navigateByUrl('');
+      setTimeout(() => {
+        this.router.navigateByUrl('');        
+      }, 3000);
     }
   }
 
