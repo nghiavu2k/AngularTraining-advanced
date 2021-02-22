@@ -20,7 +20,7 @@ export class PetSaveComponent implements OnInit {
       id: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       photoUrls: new FormControl('', Validators.required),
-      status: new FormControl(''),
+      status: new FormControl('', Validators.required),
     });
   }
 

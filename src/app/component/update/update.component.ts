@@ -47,7 +47,6 @@ export class UpdateComponent implements OnInit {
     let heroes = this.heroService.getHeros();
     this.hero = heroes.find((p: Hero | any) => p.id == this.id);
     this.formGroup.patchValue(this.hero);
-    
   }
 
   save() {
@@ -55,7 +54,7 @@ export class UpdateComponent implements OnInit {
       this.formGroup.value.id = this.hero.id;
       this.heroService.updateHero(this.formGroup.value);
       setTimeout(() => {
-        this.router.navigateByUrl('');        
+        this.router.navigateByUrl('');
       }, 3000);
     }
   }

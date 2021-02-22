@@ -56,6 +56,6 @@
             </mat-form-field>
         </div>
 
-        <button (click)="save()">Save</button>
+        <button (click)="save()" mat-raised-button color="primary" style="width: 100%;" [disabled]="petForm.invalid">Save</button>
     </form>
 </div>
