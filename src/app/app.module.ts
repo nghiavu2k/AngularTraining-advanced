@@ -22,10 +22,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DirectiveComponent } from './component/directive/directive.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { DebounceClickDirective } from './component/directive/debounce-click.directive';
-import { PetListComponent } from './pet-list/pet-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PetSaveComponent } from './pet-save/pet-save.component';
 import { PetUpdateComponent } from './pet-update/pet-update.component';
+import { PetListComponent } from './pet-list/pet-list.component';
 
 @NgModule({
   declarations: [
@@ -55,9 +55,6 @@ import { PetUpdateComponent } from './pet-update/pet-update.component';
     MatNativeDateModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes, {
-      useHash: true,
-    }),
     HttpClientModule
   ],
   providers: [],
