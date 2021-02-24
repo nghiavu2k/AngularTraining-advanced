@@ -8,7 +8,7 @@ import { ListComponent } from './component/list/list.component';
 import { FormComponent } from './component/form/form.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './component/update/update.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -43,6 +43,7 @@ import { PetListComponent } from './pet-list/pet-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatTableModule,

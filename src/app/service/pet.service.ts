@@ -3,31 +3,35 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pet } from '../model/pet';
 
+const url = 'https://petstore.swagger.io/v2/pet';
+
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class PetService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getPetsByStatus(status: string): Observable<any> {
     return this.http.get(
-      `https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`
+      `${url}/findByStatus?status=${status}`
     );
   }
 
-  getPetById(id : number) : Observable<any> {
-    return this.http.get(`https://petstore.swagger.io/v2/pet/${id}`)
+  getPetById(id: number): Observable<any> {
+    return this.http.get(url + `/${id}`)
   }
 
   create(data: Pet): Observable<any> {
-    return this.http.post('https://petstore.swagger.io/v2/pet', data);
+    return this.http.post(url, data);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete(`https://petstore.swagger.io/v2/pet/${id}`);
+    return this.http.delete(`${url}/${id}`);
   }
 
-  update(id: number, data: Pet): Observable<any> {
-    return this.http.put(`https://petstore.swagger.io/v2/pet/${id}`, data);
+  update(data: Pet): Observable<any> {
+    return this.http.put(`${url}`, data);
   }
 }

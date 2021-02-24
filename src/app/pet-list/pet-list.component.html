@@ -11,20 +11,75 @@
 </form>
 
 
-<table border=1px>
+<!-- <table border=1px>
     <th>ID</th>
     <th>Category</th>
     <th>Name</th>
     <th>Photo</th>
     <th>Status</th>
     <th>Delete</th>
+    <th>Eidt</th>
     <tbody *ngFor="let p of list">
         <td>{{p.id}}</td>
         <td>{{p.category?.name}}</td>
-        <td>{{p.photoUrls}}</td>
         <td>{{p.name}}</td>
+        <td>{{p.photoUrls}}</td>
         <td>{{p.status}}</td>
         <td><button (click)="delete(p.id)">Delete</button></td>
         <td><button type="button" [routerLink]="['../pet-update', p.id]">Edit</button></td>
     </tbody>
+</table> -->
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 col-7" style="width: 100%;">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element" matInput> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element" matInput> {{element.category.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element" matInput> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="photo">
+        <th mat-header-cell *matHeaderCellDef> Photo </th>
+        <td mat-cell *matCellDef="let element" matInput>
+            <img src="https://media-cdn.laodong.vn/Storage/NewsPortal/2020/8/24/830465/Blackpink6.jpg" width=100px alt="  "> {{element.photo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element" matInput> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tags">
+        <th mat-header-cell *matHeaderCellDef> Tags </th>
+        <td mat-cell *matCellDef="let element" matInput>
+            <div *ngFor=" let tag of element.tags">
+                {{tag.name}}
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+            <button (click)="delete(element.id)" mat-stroked-button color="warn">Delete</button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element">
+            <button [routerLink]="['../pet-update', element.id]" mat-stroked-button color="primary">Edit</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

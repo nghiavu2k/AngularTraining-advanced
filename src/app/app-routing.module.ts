@@ -26,6 +26,7 @@ export const routes: Routes = [
         (m) => m.CategoryModule
       ),
   },
+  { path: 'tags', loadChildren: () => import('./component/tags/tags.module').then(m => m.TagsModule) },
 ];
 
 @NgModule({
