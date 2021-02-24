@@ -18,7 +18,6 @@ export class CategoryService extends CateInit {
 
   addCate(newCate: Category) {
     let categories = JSON.parse(localStorage.getItem('categories') || '[]');
-    if (newCate.id === null) newCate.id = categories.length + 1;
     categories.push(newCate);
     localStorage.setItem('categories', JSON.stringify(categories));
   }

@@ -31,6 +31,7 @@ export class UpdateComponent implements OnInit {
       Validators.minLength(10),
     ]),
     dob: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
     career: new FormControl(''),
     hobby: new FormControl(''),
   });
@@ -39,14 +40,19 @@ export class UpdateComponent implements OnInit {
     private _Activatedroute: ActivatedRoute,
     private heroService: HeroService,
     private router: Router
-  ) {}
+  ) { }
   id: any;
   ngOnInit(): void {
+    debugger
     this.constraintValidate();
     this.id = this._Activatedroute.snapshot.params['id'];
     let heroes = this.heroService.getHeros();
     this.hero = heroes.find((p: Hero | any) => p.id == this.id);
     this.formGroup.patchValue(this.hero);
+    debugger;
+     if (!this.hero.email) this.isShown = false;
+     else this.isShown = true;
+    
   }
 
   save() {
