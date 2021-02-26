@@ -43,7 +43,6 @@ export class UpdateComponent implements OnInit {
   ) { }
   id: any;
   ngOnInit(): void {
-    debugger
     this.constraintValidate();
     this.id = this._Activatedroute.snapshot.params['id'];
     let heroes = this.heroService.getHeros();

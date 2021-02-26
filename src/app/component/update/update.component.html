@@ -96,7 +96,7 @@
             </mat-select>
         </mat-form-field>
         <br>
-        <button style="width: 100%;" appDebounceClick mat-button color="primary" (click)="save()" [disabled]="formGroup.invalid">
+        <button style="width: 100%;" appDebounceClick [debounceTime]="3000" mat-button color="primary" (debounceClick)="save()" [disabled]="formGroup.invalid">
             Save
         </button>
     </form>

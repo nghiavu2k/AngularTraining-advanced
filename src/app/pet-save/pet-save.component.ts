@@ -1,5 +1,5 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormBuilder, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormBuilder, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
@@ -22,6 +22,7 @@ import { PetService } from '../service/pet.service';
   ]
 })
 export class PetSaveComponent implements OnInit, ControlValueAccessor {
+
   petForm: any;
   statuses = ['available', 'pending', 'sold'];
   srcResult: any;
@@ -31,6 +32,8 @@ export class PetSaveComponent implements OnInit, ControlValueAccessor {
   onChange!: ((cateData: any) => void);
   onTouched!: () => void;
   isDisabled: boolean = false;
+  min = 0;
+  max = 100;
 
   constructor(private petService: PetService, private fb: FormBuilder, private route: Router, private categoryService: CategoryService) { }
 
@@ -62,7 +65,7 @@ export class PetSaveComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     this.petForm = this.fb.group({
-      id: new FormControl('', Validators.required),
+      id: new FormControl('', this.idRangeValidator(this.min, this.max)),
       category: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       photoUrls: new FormControl(''),
@@ -82,4 +85,13 @@ export class PetSaveComponent implements OnInit, ControlValueAccessor {
       (err) => console.log(err)
     );
   }
+  
+  idRangeValidator(min: number, max: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+        if (control.value !== undefined && (isNaN(control.value) || control.value < min || control.value > max)) {
+            return { 'idRange': true };
+        }
+        return null;
+    };
+}
 }

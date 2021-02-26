@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Category } from 'src/app/model/category';
-import { Pet } from 'src/app/model/pet';
 import { CategoryService } from 'src/app/service/category.service';
 
 @Component({

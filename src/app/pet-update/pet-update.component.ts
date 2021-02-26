@@ -36,10 +36,12 @@ export class PetUpdateComponent implements OnInit {
   }
 
   getPet(id: number) {
-    debugger
     this.petService.getPetById(id).subscribe(
       (data) => {
+        let categoryyy = this.categories.find((x: any)=>x.id == data.category.id);
+        data.category = categoryyy;
         this.petForm.patchValue(data);
+        console.log(this.petForm.value);
       },
       (err) => console.log(err)
     );

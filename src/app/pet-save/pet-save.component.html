@@ -9,6 +9,12 @@
     .example-full-width {
         width: 100%;
     }
+    
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 </style>
 
 <div style="margin-top: 100px;">
@@ -18,7 +24,7 @@
                 <input type="number" required formControlName="id" matInput placeholder="Id">
             </mat-form-field>
             <div *ngIf="petForm.controls['id'].invalid && (petForm.controls['id'].dirty || petForm.controls['id'].touched)" class="alert alert-danger">
-                <div *ngIf="petForm.controls['id'].errors.required">
+                <div *ngIf="petForm.controls['id'].errors.required" style="color: red;">
                     Id is required.
                 </div>
             </div>
@@ -31,7 +37,7 @@
                     <mat-option *ngFor="let c of categories" [value]="c">{{c.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <p style="color: red;" *ngIf="getControl('category').invalid">Please select category</p>
+            <p style="color: red;" *ngIf="getControl('category').invalid && getControl('category').touched">Please select category</p>
         </div>
 
 
@@ -40,7 +46,7 @@
                 <input type="text" formControlName="name" required minlength="4" maxlength="20" matInput placeholder="Name" appAlphabetOnly>
             </mat-form-field>
             <div *ngIf="petForm.controls['name'].invalid && (petForm.controls['name'].dirty || petForm.controls['name'].touched)" class="alert alert-danger">
-                <div *ngIf="petForm.controls['name'].errors.required">
+                <div *ngIf="petForm.controls['name'].errors.required" style="color: red;">
                     Name is required.
                 </div>
             </div>

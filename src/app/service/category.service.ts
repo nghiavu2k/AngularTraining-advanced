@@ -28,7 +28,7 @@ export class CategoryService extends CateInit {
       if (categories[i].id == id) {
         categories.splice(i, 1);
         console.log(categories);
-      }
+      } 
     }
     localStorage.setItem('categories', JSON.stringify(categories));
   }
