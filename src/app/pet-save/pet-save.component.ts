@@ -1,6 +1,7 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, HostListener, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormBuilder, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CanComponentLeave } from '../guards/un-saved-changes.guard';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
 import { PetService } from '../service/pet.service';
@@ -21,7 +22,7 @@ import { PetService } from '../service/pet.service';
     }
   ]
 })
-export class PetSaveComponent implements OnInit, ControlValueAccessor {
+export class PetSaveComponent implements OnInit, CanComponentLeave {
 
   petForm: any;
   statuses = ['available', 'pending', 'sold'];
@@ -34,33 +35,13 @@ export class PetSaveComponent implements OnInit, ControlValueAccessor {
   isDisabled: boolean = false;
   min = 0;
   max = 100;
+  hasChanges!: boolean;
 
-  constructor(private petService: PetService, private fb: FormBuilder, private route: Router, private categoryService: CategoryService) { }
-
-  writeValue(obj: any): void {
-    this.cateData = obj;
-  }
-  registerOnChange(fn: (cateData: Category) => void) {
-    this.onChange = fn;
-  }
-  registerOnTouched(fn: () => void) {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
-  }
-
-  handleOnCateChange(e: any) {
-    debugger;
-    const cateId = parseInt(e.target.value);
-    const cateSelect = this.categories.find((cate: Category) => cate.id === cateId);
-    this.writeValue(cateSelect);
-    this.onChange(cateSelect);
-  }
-
-  getControl(key: string): AbstractControl {
-    return this.petForm.get(key);
+  constructor(private petService: PetService, private fb: FormBuilder, private route: Router, private categoryService: CategoryService) {
+   }
+  canLeave(): boolean{
+    if(this.petForm.dirty) return window.confirm("Are you sure about that?");
+    return true;
   }
 
   ngOnInit(): void {

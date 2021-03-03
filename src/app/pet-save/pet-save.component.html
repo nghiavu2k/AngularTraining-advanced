@@ -33,11 +33,10 @@
         <div>
             <mat-form-field appearance="fill" class="example-full-width">
                 <mat-label>Category</mat-label>
-                <mat-select formControlName="category" (change)="handleOnCateChange($event)" [disabled]="isDisabled">
+                <mat-select formControlName="category" [disabled]="isDisabled">
                     <mat-option *ngFor="let c of categories" [value]="c">{{c.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <p style="color: red;" *ngIf="getControl('category').invalid && getControl('category').touched">Please select category</p>
         </div>
 
 

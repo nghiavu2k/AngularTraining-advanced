@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormComponent } from './component/form/form.component';
 import { ListComponent } from './component/list/list.component';
 import { UpdateComponent } from './component/update/update.component';
+import { UnSavedChangesGuard } from './guards/un-saved-changes.guard';
 import { PetListComponent } from './pet-list/pet-list.component';
 import { PetSaveComponent } from './pet-save/pet-save.component';
 import { PetUpdateComponent } from './pet-update/pet-update.component';
@@ -12,7 +13,7 @@ export const routes: Routes = [
   { path: 'form', component: FormComponent },
   { path: 'update/:id', component: UpdateComponent },
   { path: 'pet', component: PetListComponent },
-  { path: 'pet-save', component: PetSaveComponent },
+  { path: 'pet-save', component: PetSaveComponent, canDeactivate: [UnSavedChangesGuard] },
   { path: 'pet-update/:id', component: PetUpdateComponent },
   {
     path: 'customers',
@@ -33,4 +34,4 @@ export const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

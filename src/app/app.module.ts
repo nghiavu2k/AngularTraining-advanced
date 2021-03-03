@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule, routes } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './component/list/list.component';
 import { FormComponent } from './component/form/form.component';
-import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './component/update/update.component';
@@ -20,12 +19,13 @@ import { PipeAndDirectiveComponent } from './component/pipe-and-directive/pipe-a
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DirectiveComponent } from './component/directive/directive.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DebounceClickDirective } from './component/directive/debounce-click.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { PetSaveComponent } from './pet-save/pet-save.component';
 import { PetUpdateComponent } from './pet-update/pet-update.component';
 import { PetListComponent } from './pet-list/pet-list.component';
+import { UnSavedChangesGuard } from './guards/un-saved-changes.guard';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ import { PetListComponent } from './pet-list/pet-list.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UnSavedChangesGuard],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
